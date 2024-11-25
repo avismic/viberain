@@ -13,12 +13,14 @@
     }
     .header{
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
     }
     .logo-and-name{
       display: flex;
       align-items: center;
       font-size: 30px;
-      margin: 20px;
     }
 
     .logo-and-name img {
@@ -32,6 +34,21 @@
       font-family: Helvetica;
       font-weight: 600;
     }
+
+    .buttons{
+      display: flex;
+      gap: 10px;
+    }
+
+    .buttons button{
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 3px;
+      border: none;
+      cursor: pointer;
+      color: #ffffff;
+      background-color: rgba(30, 33, 56,0.3);
+    }
   </style>
 </head>
 <body>
@@ -41,9 +58,9 @@
       <div class="comp-name">viberain</div>
     </div>
     <div class="buttons">
-      <button>hello1</button>
-      <button>hello2</button>
-      <button>hello3</button>
+      <button>Contact Us</button>
+      <button>About</button>
+      <button>Login/Sign Up</button>
     </div>
   </div>
   
