@@ -1,240 +1,493 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Viberain Avi</title>
-  <link rel="icon" type="image/png" href="media/vr-logo.png">
-  <style>
-    body{
-    background: linear-gradient(to right, #BBDEEA, #8bdeff,#5cafea, #607F80);
-    height: 100vh;
-    margin: 0;
-    font-family: Helvetica;
-    }
-    .header{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-    }
-    .logo-and-name{
-      display: flex;
-      align-items: center;
-      font-size: 30px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viberain - Digital Marketing Agency</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-    .logo-and-name img {
-      height: 26px;
-      margin-right: 5px;
-      margin-top: 3px;
-      border-radius: 5px;
-    }
+        :root {
+            --color-light: #BBDEEA;
+            --color-medium: #6DBFE0;
+            --color-dark: #147CC7;
+            --color-accent: #607F80;
+            --color-text: #1E2138;
+        }
 
-    .comp-name{
-      font-weight: 600;
-    }
+        body {
+            background: linear-gradient(135deg, var(--color-light), var(--color-medium), var(--color-dark));
+            min-height: 100vh;
+            color: var(--color-text);
+            overflow-x: hidden;
+        }
 
-    .buttons{
-      display: flex;
-      gap: 10px;
-    }
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
 
-    .buttons button{
-      padding: 10px 15px;
-      font-size: 16px;
-      border-radius: 3px;
-      border: none;
-      cursor: pointer;
-      color: #ffffff;
-      background-color: rgba(30, 33, 56,0.2);
-      transition: background-color 0.3s;
-    }
-    .buttons button:hover{
-      background-color: rgba(30, 33, 56,0.5);
-    }
+        .navbar.scrolled {
+            padding: 0.5rem 5%;
+            background: rgba(255, 255, 255, 0.2);
+        }
 
-    .hero{
-      height: 60vh;
-      display:flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #ffffff;
-      background: rgba(30,33,56,0.9);
-      padding: 1 20px;
-    }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
 
-    .hero h1{
-      font-size: 48px;
-      margin: 0;
-    }
+        .logo:hover {
+            transform: scale(1.05);
+        }
 
-    .hero p{
-      font-size: 24px;
-      margin: 10px 0 0;
-    }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
 
-    .hero button{
-      margin-top: 20px;
-      padding: 15px 30px;
-      font-size: 18px;
-      background-color: #5cafea;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
 
-    .hero button:hover{
-      background-color: #8bdeff;
-    }
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
 
-    .section{
-      padding: 40px 50px;
-    }
+        .search-container {
+            position: relative;
+            margin-left: 2rem;
+        }
 
-    .services h2{
-      margin-bottom: 20px;
-      font-size: 36px;
-    }
+        .search-input {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--color-text);
+            width: 200px;
+            transition: all 0.3s ease;
+        }
 
-    .services, .about-us, .contact{
-      display: flex;
-      flex-direction: column;
-      align-items:flex-start;
-    }
+        .search-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.3);
+            width: 250px;
+        }
 
-    .service-item{
-      background-color: rgba(255,255,255,0.9);
-      border-radius: 5px;
-      padding: 20px;
-      margin: 10px;
-      text-align: center;
-      width: 80%;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .about-us p, .contact form{
-      max-width: 600px;
-      text-align: center;
-      margin: 0 auto;
-    }
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 1;
+        }
 
-    .contact form{
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s forwards;
+        }
 
-    .contact input , .contact textarea{
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s 0.3s forwards;
+        }
 
-    .contact button{
-      background-color: #5cafea;
-      column-rule: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
+        .cta-button {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            background: var(--color-dark);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s 0.6s forwards;
+        }
 
-    .contact button:hover{
-      background-color: #8bdeff;
-    }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
 
-    .services-container{
-      display: flex;
-      justify-content: space-between;
-      align-items:flex-start;
-      width: 100%;
-      gap: 40px;
-    }
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
 
-    .services-list{
-      flex: 0 1 60%;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
 
-    .services-image{
-      flex: 0 1 80%;
-      /* padding: 20px; */
-      display: flex;
-      justify-content: flex-end;
-    }
-    .services-image img{
-      width: 325px;
-      margin-top: 10px;
-      border-radius: 5px;
-    }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    .service-item{
-      width: 100%;
-      margin-bottom: 30px;
-    }
+        .service-card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
 
-    
-    
-  </style>
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 6rem 2rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            background: var(--color-medium);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-text);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-medium);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .search-container {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="header">
-    <div class="logo-and-name">
-      <img src="media/vr.png">
-      <div class="comp-name">viberain</div>
-    </div>
-    <div class="buttons">
-      <button>Contact Us</button>
-      <button>About</button>
-      <button>Login/Sign Up</button>
-    </div>
-  </div>
+    <nav class="navbar">
+        <a href="#" class="logo">viberain</a>
+        <div class="nav-links">
+            <a href="/index.html">Home</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="/about.html">About</a>
+            <a href="/contactus.html">Contact</a>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search...">
+            </div>
+        </div>
+    </nav>
 
-  <div class="hero">
-    <h1>Welcome to Viberain</h1>
-    <p>Your ultimate advertising and digital marketing partner</p>
-    <button>Get Started</button>
-  </div>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Transform Your Digital Presence</h1>
+            <p>We create innovative digital marketing solutions that drive results and elevate your brand to new heights.</p>
+            <button class="cta-button">Get Started</button>
+        </div>
+    </section>
 
-  <div class="section services">
-    <h2>Our Services</h2>
-    <div class="services-container">
-      <div class="service-list">
-        <div class="service-item">SEO Optimization</div>
-        <div class="service-item">Social Media Marketing</div>
-        <div class="service-item">Content Creation</div>
-        <div class="service-item">Pay-Per-Click Advertising</div>
-      </div>
-      <div class="services-image">
-        <img src="media/vr-opaque.png" alt="digital-marketing">
-      </div>
-    </div>
-  </div>
+    <section class="services" id="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>Digital Strategy</h3>
+                <p>Comprehensive digital strategies tailored to your business goals.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Social Media</h3>
+                <p>Engaging social media management and content creation.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>SEO Optimization</h3>
+                <p>Boost your visibility with our expert SEO services.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Analytics & Insights</h3>
+                <p>Data-driven decisions to optimize your campaigns.</p>
+            </div>
+        </div>
+    </section>
 
-  <div class="section about-us">
-    <h2>About Us</h2>
-    <p>At Viberain, we believe in the power of digital marketing to transform businesses. Our team of experts is dedicated to helping you achieve your marketing goals through innovative strategies and creative solutions.</p>
-  </div>
+    <section class="portfolio" id="portfolio">
+        <h2 class="section-title">Our Work</h2>
+        <div class="portfolio-grid">
+            <!-- Portfolio items will be dynamically added -->
+        </div>
+    </section>
 
-  <div class="section contact">
-    <h2>Contact Us</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
+    <section class="testimonials">
+        <h2 class="section-title">Client Testimonials</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial-card">
+                <p>"Viberain transformed our online presence completely. Their strategic approach and creative solutions exceeded our expectations."</p>
+                <h4>John Smith</h4>
+                <p>CEO, Tech Solutions</p>
+            </div>
+        </div>
+    </section>
 
-  
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Viberain is a leading digital marketing agency dedicated to helping businesses grow through innovative solutions.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@viberain.com</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Address: 123 Marketing St, Digital City</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">📱</a>
+                    <a href="#" aria-label="Twitter">💬</a>
+                    <a href="#" aria-label="LinkedIn">👥</a>
+                    <a href="#" aria-label="Instagram">📸</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Viberain. All rights reserved.</p>
+        </div>
+    </footer>
 
-</body>
-</html>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Portfolio items generator
+        const portfolioGrid = document.querySelector('.portfolio-grid');
+        const portfolioItems = 6; // Number of portfolio items to generate
+
+        for (let i = 0; i < portfolioItems; i++) {
+            const item = document.createElement('div');
+            item.className = 'portfolio-item';
+            item.innerHTML = `
+                <div class="portfolio-overlay">
+                    <h3>Project ${i + 1}</h3>
+                </div>
+            `;
+            portfolioGrid.appendChild(item);
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        </script>
+  </body>
+        

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viberain Avi</title>
+  <link rel="icon" type="image/png" href="media/vr-logo.png">
+  <style>
+    body{
+    background: linear-gradient(to right, #BBDEEA, #8bdeff,#5cafea, #607F80);
+    height: 100vh;
+    margin: 0;
+    font-family: Helvetica;
+    }
+    .header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+    .logo-and-name{
+      display: flex;
+      align-items: center;
+      font-size: 30px;
+    }
+
+    .logo-and-name img {
+      height: 26px;
+      margin-right: 5px;
+      margin-top: 3px;
+      border-radius: 5px;
+    }
+
+    .comp-name{
+      font-weight: 600;
+    }
+
+    .buttons{
+      display: flex;
+      gap: 10px;
+    }
+
+    .buttons button{
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 3px;
+      border: none;
+      cursor: pointer;
+      color: #ffffff;
+      background-color: rgba(30, 33, 56,0.2);
+      transition: background-color 0.3s;
+    }
+    .buttons button:hover{
+      background-color: rgba(30, 33, 56,0.5);
+    }
+
+    .hero{
+      height: 60vh;
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #ffffff;
+      background: rgba(30,33,56,0.9);
+      padding: 1 20px;
+    }
+
+    .hero h1{
+      font-size: 48px;
+      margin: 0;
+    }
+
+    .hero p{
+      font-size: 24px;
+      margin: 10px 0 0;
+    }
+
+    .hero button{
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #5cafea;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .hero button:hover{
+      background-color: #8bdeff;
+    }
+
+    .section{
+      padding: 40px 50px;
+    }
+
+    .services h2{
+      margin-bottom: 20px;
+      font-size: 36px;
+    }
+
+    .services, .about-us, .contact{
+      display: flex;
+      flex-direction: column;
+      align-items:flex-start;
+    }
+
+    .service-item{
+      background-color: rgba(255,255,255,0.9);
+      border-radius: 5px;
+      padding: 20px;
+      margin: 10px;
+      text-align: center;
+      width: 80%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .about-us p, .contact form{
+      max-width: 600px;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .contact form{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact input , .contact textarea{
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .contact button{
+      background-color: #5cafea;
+      column-rule: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .contact button:hover{
+      background-color: #8bdeff;
+    }
+
+    .services-container{
+      display: flex;
+      justify-content: space-between;
+      align-items:flex-start;
+      width: 100%;
+      gap: 40px;
+    }
+
+    .services-list{
+      flex: 0 1 60%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .services-image{
+      flex: 0 1 80%;
+      /* padding: 20px; */
+      display: flex;
+      justify-content: flex-end;
+    }
+    .services-image img{
+      width: 325px;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+
+    .service-item{
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    
+    
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo-and-name">
+      <img src="media/vr.png">
+      <div class="comp-name">viberain</div>
+    </div>
+    <div class="buttons">
+      <a href="contactus.html">
+        <button>Contact Us</button>
+      </a>
+      <button>About</button>
+      <button>Login/Sign Up</button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Welcome to Viberain</h1>
+    <p>Your ultimate advertising and digital marketing partner</p>
+    <button>Get Started</button>
+  </div>
+
+  <div class="section services">
+    <h2>Our Services</h2>
+    <div class="services-container">
+      <div class="service-list">
+        <div class="service-item">SEO Optimization</div>
+        <div class="service-item">Social Media Marketing</div>
+        <div class="service-item">Content Creation</div>
+        <div class="service-item">Pay-Per-Click Advertising</div>
+      </div>
+      <div class="services-image">
+        <img src="media/vr-opaque.png" alt="digital-marketing">
+      </div>
+    </div>
+  </div>
+
+  <div class="section about-us">
+    <h2>About Us</h2>
+    <p>At Viberain, we believe in the power of digital marketing to transform businesses. Our team of experts is dedicated to helping you achieve your marketing goals through innovative strategies and creative solutions.</p>
+  </div>
+
+  <div class="section contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  
+
+</body>
+</html>
